@@ -1,0 +1,2 @@
+# Ignore al SQLite databases
+db/*.sqlite3
