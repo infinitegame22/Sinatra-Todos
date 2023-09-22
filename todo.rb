@@ -25,18 +25,12 @@ end
 # View list of lists
 get "/lists" do
   @lists = session[:lists]
-  session.inspect
   erb :lists, layout: :layout
 end
 
 # render the new list form
 get "/lists/new" do
   erb :new_list
-end
-
-get "/lists/:list_index" do 
-  "Hello #{params["list_index"]}"
-  # erb :list_index
 end
 
 # Return an error message if the name is invalid. Return nil if name is valid.
@@ -66,3 +60,9 @@ post "/lists" do
 end
 
 set :session_secret, SecureRandom.hex(32)
+
+get "/lists/:id" do
+  id = params[:id].to_i
+  @list = session[:lists][id]
+  erb :list_index
+end
