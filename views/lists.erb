@@ -3,8 +3,11 @@
     <li>
       <a href="/lists/<%= index %>">
         <h2><%= list[:name] %></h2>
-        <p><%= list[:todos].size %></p></li>
+        <p><%= list[:todos].size %></p>
+    </li>
   <% end %>
 </ul>
 
-<a href="/lists/new">New List</a>
+<% content_for :header_links %>
+  <a href="/lists/new">New List</a>
+<% end %>
