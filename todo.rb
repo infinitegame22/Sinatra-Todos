@@ -48,8 +48,9 @@ end
 # Create a new list
 post "/lists" do
   list_name = params[:list_name].strip
+
   error = error_for_list_name(list_name)
-    if error
+  if error
     session[:error] = error
     erb :new_list
   else
@@ -67,4 +68,9 @@ get "/lists/:id" do
   id = params[:id].to_i
   @list = session[:lists][id]
   erb :list_index
+end
+
+# Edit an existing todo list
+get "/lists/:id/edit" do
+  erb :edit_list
 end
