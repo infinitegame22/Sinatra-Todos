@@ -67,7 +67,6 @@ body > header .actions a.list:before {
   background: transparent url("../images/icon_list.png") 0 0 no-repeat; 
 }
 
-
 main {
   max-width: 1000px;
   padding: 0 0 40px 0;
@@ -411,4 +410,10 @@ form fieldset.actions a:hover {
 
 #todos > ul li.complete .check {
   background: transparent url("../images/icon_check.png") 50% 50% no-repeat; 
+}
+
+.workaround {
+  display:flex;
+  justify-content:space-between; 
+  width:100%;
 }

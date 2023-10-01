@@ -4,8 +4,8 @@ require "tilt/erubis"
 require "sinatra/content_for"
 
 configure do
-  enable :sessions
-  set :session_secret, 'secret'
+  use Rack::Session::Cookie, :key=>"rack.session", :path=>"/" 
+  set :session_secret, SecureRandom.hex(32)
   set :erb, :escape_html => true
 end
 
@@ -27,6 +27,8 @@ end
 # View list of lists
 get "/lists" do
   @lists = session[:lists]
+  p @lists
+  p params
   erb :lists, layout: :layout
 end
 
@@ -62,8 +64,6 @@ post "/lists" do
   
 end
 
-set :session_secret, SecureRandom.hex(32)
-
 get "/lists/:id" do
   id = params[:id].to_i
   @list = session[:lists][id]
@@ -92,4 +92,10 @@ post "/lists/:id" do
     session[:success] = "The list has been updated."
     redirect "/lists/#{id}"
   end
+end
+
+delete "/lists/:id" do
+  id = params[:id].to_i
+  @lists.delete(id)
+  erb :edit_list
 end

@@ -1,3 +1,8 @@
+<div class="workaround">
+  <label for="list_name">Editing <%= @list[:name] %></label>
+  <label for="delete">Delete List</label>
+</div>
+
 <form action="/lists/<%= params[:id] %>" method="post">
   <dl>
     <dt>
@@ -12,3 +17,7 @@
     <a href="/lists/<%= params[:id] %>">Cancel</a>
   </fieldset>
 </form> 
+
+<% content_for :header_links do %>
+  <a href="/lists">All Lists</a>
+<% end %>
