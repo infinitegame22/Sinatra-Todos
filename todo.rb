@@ -94,8 +94,8 @@ post "/lists/:id" do
   end
 end
 
-delete "/lists/:id" do
+delete "/delete" do
   id = params[:id].to_i
   @lists.delete(id)
-  erb :edit_list
+  redirect "/lists"
 end

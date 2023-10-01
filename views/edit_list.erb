@@ -1,6 +1,6 @@
-<div class="workaround">
+<div class="workaround" method="_method">
   <label for="list_name">Editing <%= @list[:name] %></label>
-  <label for="delete">Delete List</label>
+  <a href="lists/:id/delete">Delete List</a>
 </div>
 
 <form action="/lists/<%= params[:id] %>" method="post">
